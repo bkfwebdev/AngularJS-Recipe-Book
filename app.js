@@ -1,29 +1,13 @@
 var app = angular.module("app",["ngRoute"]);
 
 app.service("dataService", function($scope,$http){
-var baseURL = "http://localhost:5000";
-
-this.getAllRecipes = function(){
-    let data = $http.get(baseURL + "/api/recipes");
-    return data;
-}
-
-this.getAllCategories = function(){
-    let data = $http.get(baseURL + "/api/categories");
-    return data;
-}
-
-this.getAllFoodItems = function(){
-    let data = $http.get(baseURL + "/api/fooditems");
-    return data;
-}
-
-this.getReciCat = function(targetCat){
-    let data = $http.get(baseURL + "/api/recipes?category={" + targetCat + "}");
-    return data;
-}
-this.getReciID = // get recipe by ID
-this.update = // update recipe
-this.add = // add recipe
-this.delete = // delete recipe 
+let baseURL = "http://localhost:5000";
+this.getAllRecipes = function(callback){$http.get(baseURL + "/api/recipes").then(callback);}
+this.getAllCategories = function(callback){$http.get(baseURL + "/api/categories").then(callback);}
+this.getAllFoodItems = function(callback){$http.get(baseURL + "/api/fooditems").then(callback);}
+this.getReciCat = function(targetCat,callback){$http.get(baseURL + "/api/recipes?category={" + targetCat + "}").then(callback)};
+this.getReciID = function(recipeID,callback){$http.get(baseURL + "/api/recipes/{" + recipeID + "}").then(callback)};
+this.update = function(recipeUpdate){}
+this.add = function(recipeAddition){}
+this.delete = function(deletedItem){}
 });
