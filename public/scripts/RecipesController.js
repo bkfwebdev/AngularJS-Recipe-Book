@@ -7,7 +7,7 @@ angular.module("app")
 .controller('RecipesController', ['$scope', 'dataService', '$location', function($scope, dataService, $location) {
   // gets all the recipes and assigns them to the scope.recipes for display in the view
    dataService.getRecipes(function(response) {
-     console.log(response.data);
+     // console.log(response.data);
      $scope.recipes = response.data;
    });
    //instantiates category and id variables
