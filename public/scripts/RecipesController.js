@@ -36,6 +36,10 @@ angular.module("app")
       });
     });
   };
+  // test the edit anchor tags/buttons
+  $scope.thisIsATest = function($index){
+    console.log("beeeeeeeeeeeeeeeeeeeeeeeeep",$index);
+};
   // instiaties a newRecipe object to display in the view
   var newRecipe = {
     name:"New Recipe",
