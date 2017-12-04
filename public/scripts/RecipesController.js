@@ -39,6 +39,11 @@ angular.module("app")
   // test the edit anchor tags/buttons
   $scope.thisIsATest = function($index){
     console.log("beeeeeeeeeeeeeeeeeeeeeeeeep",$index);
+    dataService.getRecipes(function(response){
+      console.log(response.data[$index]);
+      $location.url('/edit/' + response.data[$index]);
+    });
+    
 };
   // instiaties a newRecipe object to display in the view
   var newRecipe = {
