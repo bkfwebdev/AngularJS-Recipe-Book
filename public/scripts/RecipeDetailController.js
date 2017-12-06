@@ -37,6 +37,10 @@ $scope.newStep = function() {
   $scope.recipe.steps.push({description: "New Step"});
   console.log($scope.recipe.steps);
 };
+// test to see if data from previous page is in the scope
+$scope.dataTest = function($index){
+  console.log($scope.recipe[$index]);
+}
 // delete a step in client local memory
   $scope.deleteStep = function(index) {
     $scope.recipe.steps.splice(index, 1);

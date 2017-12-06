@@ -40,8 +40,8 @@ angular.module("app")
   $scope.thisIsATest = function($index){
     console.log("beeeeeeeeeeeeeeeeeeeeeeeeep",$index);
     dataService.getRecipes(function(response){
-      console.log(response.data[$index]);
-      $location.url('/edit/' + response.data[$index]);
+      console.log(response.data[$index]._id);
+      $location.url("/edit/" + response.data[$index]._id);
     });
     
 };
