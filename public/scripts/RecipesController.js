@@ -44,7 +44,7 @@ angular.module("app")
     });
     
 };
-  // instiaties a newRecipe object to display in the view
+  // instantiates a newRecipe object to display in the view
   var newRecipe = {
     name:"New Recipe",
     description:"New Recipe",

@@ -7,6 +7,12 @@ angular.module("app")
 .controller('RecipeDetailController', ['$scope', 'dataService', '$location', '$routeParams', function($scope, dataService, $location, $routeParams) {
   // gets the recipe ID from the url routeparams
   $scope.ID = $routeParams.id;
+
+//go back to recipe page 
+  $scope.goBack = function() {
+    console.log("should be back at recipes page");
+    $location.url('/#')
+  };
   // get recipe by id
   $scope.getID = function() {
     dataService.getID($scope.ID, function(response) {
@@ -47,6 +53,7 @@ $scope.newStep = function() {
     console.log("should be saving to this id " + $scope.recipe._id);
     dataService.putID($scope.recipe._id, $scope.recipe, function(response) {
         console.log(response.data);
+        $scope.goBack();
         $scope.recipe = response.data;
           }, function(reason)  {
             console.log(reason);
@@ -59,11 +66,8 @@ $scope.newStep = function() {
              
            };
 
- /*       $scope.goBack = function() {
-          console.log("should be back at recipes page");
-          $location.url('/#')
-        };
- */
+   
+
         dataService.getFoodItems(function(response) {
           console.log(response.data);
           $scope.foodItems = response.data;
