@@ -36,9 +36,8 @@ angular.module("app")
       });
     });
   };
-  // test the edit anchor tags/buttons
-  $scope.thisIsATest = function($index){
-    console.log("beeeeeeeeeeeeeeeeeeeeeeeeep",$index);
+  // open recipe detail for selected recipe to edit
+  $scope.editRecipe = function($index){
     dataService.getRecipes(function(response){
       console.log(response.data[$index]._id);
       $location.url("/edit/" + response.data[$index]._id);

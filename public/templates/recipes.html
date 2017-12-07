@@ -24,7 +24,7 @@
 
 <div class="grid-100 row addHover" ng-repeat="rec in recipes">
 
-  <a ng-click ="thisIsATest($index)">
+  <a ng-click ="editRecipe($index)">
     <div class="grid-70">
       <p>
         {{rec.description}}
@@ -37,7 +37,7 @@
       <div class="flush-right">
         <p ng-model='id'>
 
-          <a ng-click ="thisIsATest($index)"> <img src="images/edit.svg" height="12px" > Edit </a>
+          <a ng-click ="editRecipe($index)"> <img src="images/edit.svg" height="12px" > Edit </a>
 
           <a class="no-action-link" ng-click="deleteRecipe($index)"> <img src="images/delete.svg" height="12px"> Delete </a>
         </p>

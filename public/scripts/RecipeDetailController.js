@@ -37,20 +37,18 @@ $scope.newStep = function() {
   $scope.recipe.steps.push({description: "New Step"});
   console.log($scope.recipe.steps);
 };
-// test to see if data from previous page is in the scope
-$scope.dataTest = function($index){
-  console.log($scope.recipe[$index]);
-}
+ 
 // delete a step in client local memory
   $scope.deleteStep = function(index) {
     $scope.recipe.steps.splice(index, 1);
   }
   // save recipe
   $scope.saveRecipe = function() {
+    console.log("should be saving to this id " + $scope.recipe._id);
     dataService.putID($scope.recipe._id, $scope.recipe, function(response) {
         console.log(response.data);
         $scope.recipe = response.data;
-          }, function(reason) {
+          }, function(reason)  {
             console.log(reason);
             $scope.errors = [];
              for (var error in reason.data.errors) {
@@ -58,12 +56,14 @@ $scope.dataTest = function($index){
                  $scope.errors.push(reason.data.errors[error][0].userMessage)
                }
              });
+             
            };
 
-        $scope.goBack = function() {
+ /*       $scope.goBack = function() {
+          console.log("should be back at recipes page");
           $location.url('/#')
         };
-
+ */
         dataService.getFoodItems(function(response) {
           console.log(response.data);
           $scope.foodItems = response.data;
