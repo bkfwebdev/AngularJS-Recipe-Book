@@ -7,7 +7,7 @@ angular.module("app")
 .controller('RecipesController', ['$scope', 'dataService', '$location', function($scope, dataService, $location) {
   // gets all the recipes and assigns them to the scope.recipes for display in the view
    dataService.getRecipes(function(response) {
-     // console.log(response.data);
+     
      $scope.recipes = response.data;
    });
    //instantiates category and id variables
@@ -15,23 +15,23 @@ angular.module("app")
    $scope.id = null;
     // gets a particular category of recipes and assigns them to the scope.recipes for display in the view
     $scope.getCategoryOfRecipes = function() {
-        console.log($scope.category);
+        
         dataService.getCategoryOfRecipes($scope.category, function(response) {
-          console.log(response.data)
+        
           $scope.recipes = response.data
         });
    };
    // gets all the categories and assigns them to the scope.getCategory
    dataService.getCategory(function(response) {
-     console.log(response.data);
+
      $scope.getCategory = response.data;
    });
    // deletes a recipe and updates the local memory accordingly
     $scope.deleteRecipe = function($index) {
       dataService.deleteID($scope.recipes[$index]._id, function(response) {
-        console.log(response);
+     
         dataService.getRecipes(function(response) {
-          console.log(response.data);
+         
           $scope.recipes = response.data;
       });
     });
@@ -39,7 +39,7 @@ angular.module("app")
   // open recipe detail for selected recipe to edit
   $scope.editRecipe = function($index){
     dataService.getRecipes(function(response){
-      console.log(response.data[$index]._id);
+     
       $location.url("/edit/" + response.data[$index]._id);
     });
     
@@ -61,10 +61,7 @@ angular.module("app")
    $scope.addRecipe = function() {
          dataService.addRecipe(newRecipe, function(response) {
          $location.url('/edit/' + response.data._id);
-     },
-        function(reason) {
-         console.log(reason)
-       });
+     });
     };
 }]);
 })();

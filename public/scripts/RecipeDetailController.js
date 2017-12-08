@@ -48,30 +48,15 @@ $scope.newStep = function() {
   $scope.deleteStep = function(index) {
     $scope.recipe.steps.splice(index, 1);
   }
-  // save recipe
+
+// save recipe
   $scope.saveRecipe = function() {
     console.log("should be saving to this id " + $scope.recipe._id);
     dataService.putID($scope.recipe._id, $scope.recipe, function(response) {
         console.log(response.data);
         $scope.goBack();
-        $scope.recipe = response.data;
-          }, function(reason)  {
-            console.log(reason);
-            $scope.errors = [];
-             for (var error in reason.data.errors) {
-                 console.log(reason.data.errors[error][0]);
-                 $scope.errors.push(reason.data.errors[error][0].userMessage)
-               }
-             });
-             
-           };
-
-   
-
-        dataService.getFoodItems(function(response) {
-          console.log(response.data);
-          $scope.foodItems = response.data;
-        });
-
+    });
+  };
+  
 }]);
 })();
