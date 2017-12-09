@@ -7,33 +7,34 @@ angular
     //service contains all routes for the Angular application
     .service('dataService', ['$http', function($http) {
           // gets all recipes
+          let baseURL = 'http://localhost:5000/api/recipes'
           this.getRecipes = function(callback) {
-            $http.get('http://localhost:5000/api/recipes')
+            $http.get(baseURL)
             .then(callback);
           };
           // gets recipes of a particular category
           this.getCategoryOfRecipes = function(category, callback) {
-            $http.get('http://localhost:5000/api/recipes?category=' + category)
+            $http.get(baseURL + '?category=' + category)
             .then(callback);
           };
           // gets a recipe by ID number
           this.getID = function(id, callback) {
-            $http.get('http://localhost:5000/api/recipes/' + id)
+            $http.get(baseURL + '/' + id)
             .then(callback);
           };
           // updates recipe by ID number
           this.putID = function(id, data, callback, failure) {
-            $http.put('http://localhost:5000/api/recipes/' + id, data)
+            $http.put(baseURL + '/' + id, data)
             .then(callback, failure)
           };
           // adds a new recipe
           this.addRecipe = function(recipe, callbackSuccess, callbackFailure) {
-            $http.post('http://localhost:5000/api/recipes', recipe)
+            $http.post(baseURL , recipe)
             .then(callbackSuccess, callbackFailure);
           };
           // deletes a recipe by ID number
           this.deleteID = function(id, callbackSuccess, callbackFailure) {
-            $http.delete('http://localhost:5000/api/recipes/' + id)
+            $http.delete(baseURL + '/' + id)
             .then(callbackSuccess, callbackFailure)
           };
           // gets all the recipe categories
