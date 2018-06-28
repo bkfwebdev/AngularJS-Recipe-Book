@@ -41,7 +41,7 @@ angular.module("app")
     dataService.getRecipes(function(response){
      
       $location.url("/edit/" + response.data[$index]._id);
-    });
+    }); 
     
 };
   // instantiates a newRecipe object to display in the view
