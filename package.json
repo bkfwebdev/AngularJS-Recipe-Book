@@ -7,7 +7,7 @@
     "start": "nodemon ./src/index.js localhost 5000",
     "db": "node ./src/api/data/seed.js"
   },
-  "author": "Treehouse Island, Inc.",
+  "author": "bkfwebdev",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.7",
@@ -15,7 +15,10 @@
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
-    "nedb": "^1.8.0"
+    "grunt": "^1.0.3",
+    "karma": "^2.0.4",
+    "nedb": "^1.8.0",
+    "ngcli-task-runner": "^1.0.3"
   },
   "devDependencies": {
     "nodemon": "^1.9.1"
